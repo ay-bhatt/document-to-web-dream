@@ -1,0 +1,31 @@
+type Dataset @table {
+  title: String!
+  description: String!
+  uploadedAt: Timestamp!
+  public: Boolean!
+  category: Category
+  tags: [String]
+  fileUrl: String
+}
+
+type DataRequest @table {
+  requestedAt: Timestamp!
+  description: String!
+  status: String!
+  requestedByEmail: String
+  fulfillmentNotes: String
+  # user: User # Future feature
+  # dataset: Dataset # If the request is for an existing dataset with missing information
+}
+
+type User @table {
+  username: String!
+  createdAt: Timestamp!
+  email: String
+  displayName: String
+}
+
+type Category @table {
+  name: String!
+  description: String
+}

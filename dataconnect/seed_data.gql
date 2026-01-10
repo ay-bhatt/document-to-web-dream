@@ -1,0 +1,64 @@
+mutation SeedDatabase @transaction @auth(level: NO_ACCESS) {
+  category_insertMany(data: [
+    {
+      id: "550e8400-e29b-41d4-a716-446655440000",
+      name: "Science",
+      description: "Datasets related to scientific research and studies."
+    },
+    {
+      id: "550e8400-e29b-41d4-a716-446655440001",
+      name: "Economics",
+      description: "Datasets related to economic indicators and financial data."
+    }
+  ])
+  user_insertMany(data: [
+    {
+      id: "650e8400-e29b-41d4-a716-446655440000",
+      username: "datamanager",
+      email: "datamanager@example.com",
+      createdAt: "2024-01-01T00:00:00Z",
+      displayName: "Data Manager"
+    },
+    {
+      id: "650e8400-e29b-41d4-a716-446655440001",
+      username: "datareader",
+      email: "datareader@example.com",
+      createdAt: "2024-01-01T00:00:00Z",
+      displayName: "Data Reader"
+    }
+  ])
+  dataset_insertMany(data: [
+    {
+      id: "750e8400-e29b-41d4-a716-446655440000",
+      categoryId: "550e8400-e29b-41d4-a716-446655440000",
+      title: "Global Temperatures",
+      description: "A dataset of global temperature measurements over time.",
+      public: true,
+      uploadedAt: "2024-02-15T00:00:00Z"
+    },
+    {
+      id: "750e8400-e29b-41d4-a716-446655440001",
+      categoryId: "550e8400-e29b-41d4-a716-446655440001",
+      title: "GDP by Country",
+      description: "A dataset of GDP measurements by country.",
+      public: true,
+      uploadedAt: "2024-02-15T00:00:00Z"
+    }
+  ])
+  dataRequest_insertMany(data: [
+    {
+      id: "850e8400-e29b-41d4-a716-446655440000",
+      description: "Request for more recent temperature data.",
+      requestedAt: "2024-03-01T00:00:00Z",
+      requestedByEmail: "requester1@example.com",
+      status: "Pending"
+    },
+    {
+      id: "850e8400-e29b-41d4-a716-446655440001",
+      description: "Request for more detailed GDP data.",
+      requestedAt: "2024-03-01T00:00:00Z",
+      requestedByEmail: "requester2@example.com",
+      status: "Pending"
+    }
+  ])
+}

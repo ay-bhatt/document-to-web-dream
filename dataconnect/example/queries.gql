@@ -1,0 +1,28 @@
+mutation CreateCategory($name: String!, $description: String) @auth(level: USER) {
+  category_insert(data: {name: $name, description: $description})
+}
+
+query ListPublicDatasets @auth(level: PUBLIC, insecureReason: "This operation is safe to expose to the public") {
+  datasets(where: {public: {eq: true}}) {
+    id
+    title
+    description
+    fileUrl
+    tags
+    uploadedAt
+  }
+}
+
+mutation UpdateDatasetTags($id: UUID!, $tags: [String!]!) @auth(level: USER) {
+  dataset_update(key: {id: $id}, data: {tags: $tags})
+}
+
+query ListDataRequestsByEmail($requestedByEmail: String!) @auth(level: USER) {
+  dataRequests(where: {requestedByEmail: {eq: $requestedByEmail}}) {
+    id
+    description
+    fulfillmentNotes
+    requestedAt
+    status
+  }
+}
