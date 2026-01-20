@@ -1,0 +1,232 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    /* Deep purple base palette */
+    --background: 252 40% 15%;
+    --foreground: 0 0% 98%;
+
+    --card: 252 45% 18%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 252 45% 18%;
+    --popover-foreground: 0 0% 98%;
+
+    /* Magenta/pink primary */
+    --primary: 315 90% 60%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Cyan accent */
+    --secondary: 185 80% 50%;
+    --secondary-foreground: 252 40% 10%;
+
+    --muted: 252 30% 25%;
+    --muted-foreground: 250 15% 65%;
+
+    /* Neon pink accent */
+    --accent: 330 100% 65%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 252 30% 28%;
+    --input: 252 30% 28%;
+    --ring: 315 90% 60%;
+
+    --radius: 1rem;
+
+    /* Custom colors */
+    --neon-pink: 315 100% 60%;
+    --neon-purple: 270 100% 70%;
+    --neon-cyan: 185 100% 60%;
+    --deep-purple: 252 50% 12%;
+    --gradient-start: 315 90% 55%;
+    --gradient-end: 270 80% 50%;
+
+    /* Glow effects */
+    --glow-pink: 0 0 30px hsl(315 100% 60% / 0.5);
+    --glow-purple: 0 0 30px hsl(270 100% 70% / 0.5);
+    --glow-cyan: 0 0 30px hsl(185 100% 60% / 0.5);
+
+    --sidebar-background: 252 50% 12%;
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-primary: 315 90% 60%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 252 40% 20%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 252 30% 25%;
+    --sidebar-ring: 315 90% 60%;
+  }
+
+  .dark {
+    --background: 252 40% 15%;
+    --foreground: 0 0% 98%;
+    --card: 252 45% 18%;
+    --card-foreground: 0 0% 98%;
+    --popover: 252 45% 18%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 315 90% 60%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 185 80% 50%;
+    --secondary-foreground: 252 40% 10%;
+    --muted: 252 30% 25%;
+    --muted-foreground: 250 15% 65%;
+    --accent: 330 100% 65%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 252 30% 28%;
+    --input: 252 30% 28%;
+    --ring: 315 90% 60%;
+    --sidebar-background: 252 50% 12%;
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-primary: 315 90% 60%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 252 40% 20%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 252 30% 25%;
+    --sidebar-ring: 315 90% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+    font-family: 'Inter', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 0.05em;
+  }
+}
+
+@layer components {
+  /* Neon glow text effect */
+  .neon-text {
+    text-shadow: 
+      0 0 5px hsl(var(--primary) / 0.8),
+      0 0 10px hsl(var(--primary) / 0.6),
+      0 0 20px hsl(var(--primary) / 0.4),
+      0 0 40px hsl(var(--primary) / 0.2);
+  }
+
+  .neon-text-white {
+    text-shadow: 
+      0 0 5px hsl(0 0% 100% / 0.8),
+      0 0 10px hsl(0 0% 100% / 0.6),
+      0 0 20px hsl(0 0% 100% / 0.4),
+      0 0 40px hsl(0 0% 100% / 0.2);
+  }
+
+  /* Gradient button */
+  .btn-gradient {
+    @apply relative overflow-hidden rounded-full px-8 py-3 font-semibold transition-all duration-300;
+    background: linear-gradient(135deg, hsl(var(--neon-pink)), hsl(var(--neon-purple)));
+    box-shadow: 0 4px 20px hsl(var(--neon-pink) / 0.4);
+  }
+
+  .btn-gradient:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 30px hsl(var(--neon-pink) / 0.6);
+  }
+
+  .btn-outline-glow {
+    @apply relative overflow-hidden rounded-full px-8 py-3 font-semibold transition-all duration-300 border-2;
+    border-color: hsl(var(--neon-pink));
+    color: hsl(var(--foreground));
+    background: transparent;
+  }
+
+  .btn-outline-glow:hover {
+    background: hsl(var(--neon-pink) / 0.1);
+    box-shadow: 0 0 20px hsl(var(--neon-pink) / 0.4);
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(var(--neon-pink)), hsl(var(--neon-purple)));
+  }
+
+  /* Card with glow */
+  .card-glow {
+    @apply rounded-3xl overflow-hidden transition-all duration-300;
+    background: hsl(var(--card));
+    border: 1px solid hsl(var(--border) / 0.5);
+  }
+
+  .card-glow:hover {
+    box-shadow: 0 0 40px hsl(var(--neon-pink) / 0.2);
+    border-color: hsl(var(--neon-pink) / 0.3);
+  }
+
+  /* Section gradient overlay */
+  .section-gradient {
+    background: linear-gradient(
+      180deg,
+      hsl(var(--background)) 0%,
+      hsl(252 50% 12%) 50%,
+      hsl(var(--background)) 100%
+    );
+  }
+
+  /* FAQ gradient background */
+  .faq-gradient {
+    background: linear-gradient(
+      135deg,
+      hsl(185 80% 50% / 0.3) 0%,
+      hsl(270 80% 60% / 0.3) 50%,
+      hsl(315 80% 60% / 0.3) 100%
+    );
+  }
+
+  /* Pink top border */
+  .pink-border-top {
+    border-top: 4px solid;
+    border-image: linear-gradient(90deg, hsl(var(--neon-pink)), hsl(var(--neon-purple))) 1;
+  }
+}
+
+@layer utilities {
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+
+  @keyframes glow {
+    from {
+      text-shadow: 
+        0 0 5px hsl(var(--primary) / 0.8),
+        0 0 10px hsl(var(--primary) / 0.6),
+        0 0 20px hsl(var(--primary) / 0.4);
+    }
+    to {
+      text-shadow: 
+        0 0 10px hsl(var(--primary) / 1),
+        0 0 20px hsl(var(--primary) / 0.8),
+        0 0 40px hsl(var(--primary) / 0.6);
+    }
+  }
+}
